@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from trading.models import Supplier
+from trading.models import Supplier, Product
 
 
 # Register your models here.
@@ -11,3 +11,9 @@ class SupplierAdmin(admin.ModelAdmin):
                     'city', 'street', 'house',
                     'created_at', 'supplier', 'debt', )
     list_filter = ('user', 'country', 'city', )
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'title', 'model', 'launch_date', )
+    search_fields = ('title', )
