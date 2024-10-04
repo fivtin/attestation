@@ -41,8 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
     'rest_framework_simplejwt',
-    'users',
+
+    'corsheaders',
+
+    # 'users',
+    'drf_yasg',
+
     'trading',
 ]
 
@@ -54,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -149,6 +156,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS':
         'rest_framework.schemas.coreapi.AutoSchema',
+
 }
 
 SIMPLE_JWT = {
@@ -180,3 +188,15 @@ SIMPLE_JWT = {
     # 'SLIDING_TOKEN_LIFETIME': datetime.timedelta(minutes=60),
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': datetime.timedelta(days=1),
 }
+
+ORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',
+]
+
+CORS_ALLOW_ALL_ORIGINS = False
+
+#
+# CSRF_TRUSTED_ORIGINS = [
+#     "https://read-and-write.example.com", #  Замените на адрес вашего фронтенд-сервера
+#     # и добавьте адрес бэкенд-сервера
+# ]
