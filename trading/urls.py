@@ -8,5 +8,4 @@ app_name = TradingConfig.name
 router = DefaultRouter()
 router.register(r'suppliers', SupplierViewSet, basename='suppliers')
 
-
-urlpatterns =  router.urls
+urlpatterns = router.urls

@@ -1,4 +1,3 @@
-from django.core.serializers import serialize
 from rest_framework.fields import SerializerMethodField
 from rest_framework.serializers import ModelSerializer
 
@@ -22,7 +21,14 @@ class SupplierUpdateSerializer(ModelSerializer):
     """Serialization of all Supplier fields (except the debt field) when editing."""
     class Meta:
         model = Supplier
-        exclude= ('debt', )
+        exclude = ('debt', )
+
+
+class SupplierCreateSerializer(ModelSerializer):
+    """Serialization of all Supplier fields (except the debt field) when editing."""
+    class Meta:
+        model = Supplier
+        exclude = ('user', )
 
 
 class SupplierDetailSerializer(ModelSerializer):

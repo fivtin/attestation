@@ -3,7 +3,8 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from trading.models import Supplier
-from trading.serializers import SupplierSerializer, SupplierUpdateSerializer, SupplierDetailSerializer
+from trading.serializers import SupplierSerializer, SupplierUpdateSerializer, SupplierDetailSerializer, \
+    SupplierCreateSerializer
 
 
 # Create your views here.
@@ -25,6 +26,8 @@ class SupplierViewSet(ModelViewSet):
             return SupplierUpdateSerializer
         elif self.action == 'retrieve':
             return SupplierDetailSerializer
+        elif self.action == 'create':
+            return SupplierCreateSerializer
         return self.serializer_class
 
     def perform_create(self, serializer):
