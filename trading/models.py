@@ -64,7 +64,7 @@ class Product(models.Model):
     model = models.CharField(max_length=128, verbose_name='модель')
     launch_date = models.DateField(**NULLABLE, verbose_name='дата начала продаж')
 
-    supplier = models.ForeignKey("supplier", on_delete=models.CASCADE, verbose_name='производитель')
+    supplier = models.ForeignKey("supplier", on_delete=models.PROTECT, verbose_name='производитель')
     in_production = models.BooleanField(default=True, verbose_name='производится')
 
     class Meta:
@@ -83,8 +83,8 @@ class Product(models.Model):
 class Stock(models.Model):
     """Implementation of the Stock model."""
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
-    supplier = models.ForeignKey(Supplier, on_delete=models.CASCADE, verbose_name='владелец')
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name='продукт')
+    supplier = models.ForeignKey(Supplier, on_delete=models.PROTECT, verbose_name='владелец')
     quantity = models.PositiveSmallIntegerField(default=0,
                                                 validators = [MinValueValidator(0)], verbose_name='количество')
     price = models.DecimalField(default=0.0, max_digits=10, decimal_places=2,

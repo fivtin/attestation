@@ -1,0 +1,99 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$4ME5srM8NovU1iOr7c7ycN$O5p3M3st8bF/C3KV+ZYOgabVgQV0X9gxalu9a8l+KTI=",
+    "last_login": "2024-10-04T12:02:53.882Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-10-04T12:02:24.380Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "trading.supplier",
+  "pk": 1,
+  "fields": {
+    "title": "Factory 1",
+    "email": "factory1@example.com",
+    "country": "Russia",
+    "city": "Fecity",
+    "street": "Peace st.",
+    "house": "10",
+    "created_at": "2024-10-04T14:05:23.971Z",
+    "level": "factory",
+    "vendor": null,
+    "debt": "0.00",
+    "user": 1
+  }
+},
+{
+  "model": "trading.supplier",
+  "pk": 2,
+  "fields": {
+    "title": "Factory 2",
+    "email": "factory2@example.com",
+    "country": "Russia",
+    "city": "Fecity",
+    "street": "Peace st.",
+    "house": "11",
+    "created_at": "2024-10-04T14:06:08.514Z",
+    "level": "factory",
+    "vendor": 1,
+    "debt": "0.00",
+    "user": 1
+  }
+},
+{
+  "model": "trading.supplier",
+  "pk": 3,
+  "fields": {
+    "title": "retail 1",
+    "email": "retail1@example.com",
+    "country": "Russia",
+    "city": "Fecity",
+    "street": "Peace st.",
+    "house": "51",
+    "created_at": "2024-10-07T08:58:25.092Z",
+    "level": "retail",
+    "vendor": 2,
+    "debt": "0.00",
+    "user": 1
+  }
+},
+{
+  "model": "trading.supplier",
+  "pk": 4,
+  "fields": {
+    "title": "trader 1",
+    "email": "trader1@example.com",
+    "country": "USA",
+    "city": "Fecity",
+    "street": "Peace st.",
+    "house": "11",
+    "created_at": "2024-10-07T09:16:19.664Z",
+    "level": "trader",
+    "vendor": 3,
+    "debt": "0.00",
+    "user": 1
+  }
+},
+{
+  "model": "trading.product",
+  "pk": 1,
+  "fields": {
+    "title": "tv",
+    "model": "c100",
+    "launch_date": "2024-10-07",
+    "supplier": 1,
+    "in_production": true
+  }
+}
+]

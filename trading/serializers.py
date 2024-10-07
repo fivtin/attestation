@@ -13,6 +13,19 @@ class ProductSerializer(ModelSerializer):
 
 
 class SupplierSerializer(ModelSerializer):
+    class Meta:
+        model = Supplier
+        fields = '__all__'
+
+
+class SupplierUpdateSerializer(ModelSerializer):
+    """Serialization of all Supplier fields (except the debt field) when editing."""
+    class Meta:
+        model = Supplier
+        exclude= ('debt', )
+
+
+class SupplierDetailSerializer(ModelSerializer):
     """Serialization of all Supplier fields on output."""
     products = SerializerMethodField(read_only=True)
 
@@ -23,10 +36,3 @@ class SupplierSerializer(ModelSerializer):
     def get_products(self, instance):
         queryset = Product.objects.filter(supplier=instance).all()
         return ProductSerializer(queryset, many=True).data
-
-
-class SupplierUpdateSerializer(SupplierSerializer):
-    """Serialization of all Supplier fields (except the debt field) when editing."""
-    class Meta:
-        model = Supplier
-        exclude= ('debt', )

@@ -1,9 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from trading.models import Supplier
-from trading.serializers import SupplierSerializer, SupplierUpdateSerializer
+from trading.serializers import SupplierSerializer, SupplierUpdateSerializer, SupplierDetailSerializer
 
 
 # Create your views here.
@@ -23,4 +23,10 @@ class SupplierViewSet(ModelViewSet):
     def get_serializer_class(self):
         if self.action in ['update', 'partial_update']:
             return SupplierUpdateSerializer
+        elif self.action == 'retrieve':
+            return SupplierDetailSerializer
         return self.serializer_class
+
+    def perform_create(self, serializer):
+        supplier = serializer.save(user=self.request.user)
+        supplier.save()
