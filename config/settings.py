@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG_MODE') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -43,10 +43,10 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework_simplejwt',
+    'django_filters',
 
     'corsheaders',
 
-    # 'users',
     'drf_yasg',
 
     'trading',
@@ -156,7 +156,7 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_SCHEMA_CLASS':
         'rest_framework.schemas.coreapi.AutoSchema',
-
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 SIMPLE_JWT = {
@@ -189,7 +189,7 @@ SIMPLE_JWT = {
     # 'SLIDING_TOKEN_REFRESH_LIFETIME': datetime.timedelta(days=1),
 }
 
-ORS_ALLOWED_ORIGINS = [
+CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
 ]
 
